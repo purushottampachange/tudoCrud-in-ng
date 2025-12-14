@@ -1,39 +1,40 @@
-<div class="row">
-    <div class="col-md-4 offset-md-4">
-        <div class="bg-white p-3 rounded mt-4 mb-4">
-            <div class="form-group">
-                <label for="tudoItem">Enter Tudo</label>
-                <input type="text" class="form-control" id="tudoItem">
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <div class="bg-white p-3 rounded mt-4 mb-4">
+                <div class="form-group">
+                    <label for="tudoItem">Enter Tudo</label>
+                    <input type="text" class="form-control" id="tudoItem" #tudoInput>
+                </div>
+
+                <button *ngIf="!isEditMode" (click)="onSubmit()" class="btn btn-sm btn-outline-primary btn-block">Add
+                    Tudo</button>
+                <button *ngIf="isEditMode" 
+                 (click) = "onUpdate()"
+                class="btn btn-sm btn-outline-success btn-block">Update Tudo</button>
             </div>
 
-            <button 
-             *ngIf = "!isEditMode"
-            class="btn btn-sm btn-outline-primary btn-block">Add Tudo</button>
-            <button 
-             *ngIf = "isEditMode"
-            class="btn btn-sm btn-outline-success btn-block">Update Tudo</button>
-        </div>
+            <div>
+                <ul *ngIf="tudoArr.length > 0 else tudoEmpty" class="list-group">
+                    <li *ngFor="let tudo of tudoArr"
+                        class="list-group-item d-flex justify-content-between align-items-center">
+                        <strong>{{tudo.tudoItem}}</strong>
+                        <div>
+                            <button (click)="onEdit(tudo)" class="btn btn-sm btn-success mr-2">Edit</button>
+                            <button 
+                            (click)="onRemove(tudo.tudoId)"
+                            class="btn btn-sm btn-danger">Remove</button>
+                        </div>
+                    </li>
+                </ul>
 
-        <div>
-            <ul 
-             *ngIf = "tudoArr.length > 0 else tudoEmpty"
-            class="list-group">
-                <li 
-                 *ngFor = "let tudo of tudoArr"
-                class="list-group-item d-flex justify-content-between align-items-center">
-                    <strong>{{tudo.tudoItem}}</strong>
-                    <div>
-                        <button class="btn btn-sm btn-success mr-2">Edit</button>
-                        <button class="btn btn-sm btn-danger">Remove</button>
-                    </div>
-                </li>
-            </ul>
-
-            <ng-template #tudoEmpty>
-                <p class="alert alert-danger">
-                     <strong>No tudos available</strong>
-                </p>
-            </ng-template>
+                <ng-template #tudoEmpty>
+                    <p class="alert alert-danger">
+                        <strong>No tudos available</strong>
+                    </p>
+                </ng-template>
+            </div>
         </div>
     </div>
+
 </div>
