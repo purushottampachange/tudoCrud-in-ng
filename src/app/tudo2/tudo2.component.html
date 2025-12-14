@@ -7,11 +7,11 @@
                     <input type="text" class="form-control" id="tudoItem" #tudoInput>
                 </div>
 
-                <button *ngIf="!isEditMode" (click)="onSubmit()" class="btn btn-sm btn-outline-primary btn-block">Add
+                <button *ngIf="!isEditMode" (click)="onSubmit()" class="btn btn-block" mat-raised-button
+                    color="primary">Add
                     Tudo</button>
-                <button *ngIf="isEditMode" 
-                 (click) = "onUpdate()"
-                class="btn btn-sm btn-outline-success btn-block">Update Tudo</button>
+                <button *ngIf="isEditMode" (click)="onUpdate()" mat-raised-button color="primary"
+                    class="btn btn-block">Update Tudo</button>
             </div>
 
             <div>
@@ -20,10 +20,8 @@
                         class="list-group-item d-flex justify-content-between align-items-center">
                         <strong>{{tudo.tudoItem}}</strong>
                         <div>
-                            <button (click)="onEdit(tudo)" class="btn btn-sm btn-success mr-2">Edit</button>
-                            <button 
-                            (click)="onRemove(tudo.tudoId)"
-                            class="btn btn-sm btn-danger">Remove</button>
+                            <button (click)="onEdit(tudo)" class="btn btn-sm mr-2"mat-stroked-button color="primary">Edit</button>
+                            <button (click)="onRemove(tudo.tudoId)" class="btn btn-sm" mat-stroked-button color="warn">Remove</button>
                         </div>
                     </li>
                 </ul>

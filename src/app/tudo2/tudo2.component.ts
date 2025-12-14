@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Itudo } from '../model/tudo';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 const cl = console.log;
 
@@ -19,6 +20,11 @@ export class Tudo2Component implements OnInit {
     { tudoId: "5", tudoItem: 'node' }
 
   ]
+
+  constructor(){
+
+     let snackBar : MatSnackBar
+  }
 
   isEditMode: boolean = false;
 
@@ -55,6 +61,8 @@ export class Tudo2Component implements OnInit {
       this.tudoArr.unshift(tudoObj);
 
       this.tudoInput.nativeElement.value = ""
+
+      
 
     }
   }
