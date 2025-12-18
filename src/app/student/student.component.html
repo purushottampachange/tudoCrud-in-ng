@@ -1,0 +1,90 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 mt-4 rounded">
+            <div class="card">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="fname">First Name</label>
+                        <input type="text" class="form-control" id="fname" #fname>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lname">Last Name</label>
+                        <input type="text" class="form-control" id="lname" #lname>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contact">Contact</label>
+                        <input type="text" class="form-control" id="contact" #contact>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="text" class="form-control" id="email" #email>
+                    </div>
+                    <button *ngIf="!isEditMode" 
+                    (click) = "onSubmit($event)"
+                    class="btn btn-sm btn-block" mat-raised-button color="primary">Add
+                        Student</button>
+                    <button *ngIf="isEditMode" 
+                    (click) = "onUpdate()"
+                    class="btn btn-sm btn-block" mat-raised-button color="primary">Update
+                        Student</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 mt-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table 
+                         *ngIf = "stdArr.length > 0 else tableEmpty"
+                        class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>SR NO</th>
+                                    <th>Full Name</th>
+                                    <th>Email</th>
+                                    <th>Contact</th>
+                                    <th>Edit</th>
+                                    <th>Remove</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let std of stdArr let i = index">
+                                    <td>{{i+1}}</td>
+                                    <td>{{std.fname}} {{std.lname}}</td>
+                                    <td>{{std.email}}</td>
+                                    <td>{{std.contact}}</td>
+                                    <td>
+                                        <button 
+                                        (click) ="onEdit(std)"
+                                        mat-icon-button color="primary"
+                                            aria-label="Example icon button with a home icon">
+                                            <mat-icon>edit</mat-icon>
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <button 
+                                         [disabled] = "EDIT_ID === std.id"
+                                        (click) = "onRemove(std.id)"
+                                        mat-icon-button color="accent"
+                                            aria-label="Example icon button with a home icon">
+                                            <mat-icon>delete</mat-icon>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <ng-template #tableEmpty>
+                            <p class="alert alert-danger">
+                                no data available
+                            </p>
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

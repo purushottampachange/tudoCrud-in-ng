@@ -1,0 +1,7 @@
+<div class="row mt-4">
+    <div 
+    *ngFor = "let post of postArr"
+    class="col-3 mb-4">
+        <app-post-card [getpost] = "post"></app-post-card>
+    </div>
+</div>

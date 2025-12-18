@@ -1,0 +1,23 @@
+
+
+.img-container{
+
+    height: 300px;
+
+    img{
+
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .noProImg{
+
+        height: 100%;
+        background-color: #ededed;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+}
